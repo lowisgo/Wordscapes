@@ -14,7 +14,7 @@
 
 int main(int argc, char **argv){
 
-	int word_size, hint_size, file_size, max_char=50, len, lent, result;
+	int word_size, hint_size, file_size, max_char=50, len, lent, result, is_file_empty = 0;
 	char dict_word[max_char], str[max_char], temp1[max_char], temp2[max_char];
 	char *filename;
 
@@ -70,13 +70,32 @@ int main(int argc, char **argv){
 			fclose(rfile_ptr);
 			fclose(wfile_ptr);
 
-			// backtracking
-			green();
-			printf("\n\t Possible Answers:\n");
-			reset();
-			combination(argv, word_size, hint_size);
-			permutation(hint_size, file_size);
-			//Beep(750, 500);
+			//check if dictionary has content
+			FILE *fp = fopen( "./dictionary.txt","r" );
+			if (NULL != fp) {
+			    fseek (fp, 0, SEEK_END);
+			    int size = ftell(fp);
+
+			    if (0 == size) {
+			    	green();
+					printf("\n\t Word does not exist. \n");
+					reset();
+			        is_file_empty = 1;
+			    } 
+			}
+
+			fclose(fp);
+
+			if(is_file_empty == 0){
+				// backtracking
+				green();
+				printf("\n\t Possible Answers:\n");
+				reset();
+				combination(argv, word_size, hint_size);
+				permutation(hint_size, file_size);
+				//Beep(750, 500);	
+			}
+
 			
 
 		} else printf("Invalid input.\n");
