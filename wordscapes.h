@@ -67,6 +67,7 @@ int compatible(char *hint_word, char *word){
 	return flag;
 }
 
+<<<<<<< HEAD
 void lower_string(char s[]) {
 	int c = 0;
    
@@ -78,6 +79,8 @@ void lower_string(char s[]) {
 	}
 }
 
+=======
+>>>>>>> fb77243f99e7a7ec1158577caaa868f355dafe16
 void combination(char **input, int word_size, int hint_size){
 	int start, move, i, candidate, N;
 	int nopts[word_size+2];

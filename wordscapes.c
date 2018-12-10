@@ -58,8 +58,11 @@ int main(int argc, char **argv){
 				int length = strlen(dict_word);
 				if (dict_word[length-1] == '\n') dict_word[length-1] = '\0';
 
+<<<<<<< HEAD
 				lower_string(dict_word);
 
+=======
+>>>>>>> fb77243f99e7a7ec1158577caaa868f355dafe16
 				if ((char_compare(argv[1], dict_word) == 1) && (strlen(dict_word) == hint_size)){
 					if (compatible(argv[2], dict_word) == 1){
 						fprintf (wfile_ptr, "%s\n", dict_word);
